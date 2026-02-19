@@ -1,0 +1,17 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f6f8fb; color: #1c2230; }
+.container { max-width: 980px; margin: 0 auto; padding: 20px; }
+.narrow { max-width: 460px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; }
+.card { background: white; border: 1px solid #dbe2ef; border-radius: 8px; padding: 16px; margin: 12px 0; }
+label { display: block; margin: 8px 0; }
+input, select, textarea, button { width: 100%; box-sizing: border-box; padding: 8px; margin-top: 4px; }
+button { background: #2d6cdf; color: white; border: none; border-radius: 6px; cursor: pointer; }
+button:hover { background: #255ac0; }
+.flash { padding: 10px; border-radius: 6px; margin: 8px 0; }
+.flash.info { background: #e9f2ff; color: #0b3c8a; }
+.flash.error { background: #ffe8e8; color: #8f1d1d; }
+.muted { color: #67758a; }
+.process { color: #1640a6; font-weight: bold; }
+.chat-item { border-top: 1px solid #e6ebf2; padding-top: 12px; margin-top: 12px; }
+pre { white-space: pre-wrap; background: #f7f9fd; padding: 10px; border-radius: 6px; }
+.smalltext { font-size: 0.9em; }
