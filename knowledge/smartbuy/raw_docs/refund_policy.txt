@@ -1,0 +1,7 @@
+SmartBuy Refund SOP
+
+1. Verify order ID and customer identity before any refund action.
+2. Refund eligibility is 7 calendar days from delivery for damaged or wrong items.
+3. For non-delivery complaints, check courier scan status and raise logistics ticket.
+4. If refund is approved, create refund request in OMS and share SLA of 5 business days.
+5. Escalated dissatisfied customer must be offered supervisor callback in under 4 hours.
