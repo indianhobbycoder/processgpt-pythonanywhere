@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProcessGPT Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <h1>ProcessGPT Agent Console</h1>
+      <div>
+        <span>User: {{ username }}</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <section class="card">
+      <h3>Active Process: <span class="process">{{ active_process or 'Not selected' }}</span></h3>
+      {% if not active_process %}
+      <form method="post">
+        <label>Select process
+          <select name="process_id" required>
+            <option value="">--Choose process--</option>
+            {% for p in processes %}
+            <option value="{{ p }}">{{ p }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <button type="submit">Lock Process</button>
+      </form>
+      {% else %}
+      <p class="muted">Process is locked for this session.</p>
+      {% endif %}
+    </section>
+
+    {% if active_process %}
+    <section class="card">
+      <form method="post">
+        <label>Ask process question
+          <textarea name="question" rows="3" required></textarea>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    {% endif %}
+
+    <section class="card">
+      <h3>Conversation</h3>
+      {% if chat_history %}
+        {% for entry in chat_history %}
+          <div class="chat-item">
+            <p><strong>Q:</strong> {{ entry.question }}</p>
+            <p><strong>A:</strong></p>
+            <pre>{{ entry.answer }}</pre>
+            {% if entry.sources %}
+              <p class="smalltext">Sources:
+                {% for s in entry.sources %}
+                [{{ s.source }}#{{ s.chunk_index }} ({{ s.score }})]
+                {% endfor %}
+              </p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+      <p class="muted">No chat yet.</p>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

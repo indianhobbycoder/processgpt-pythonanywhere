@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProcessGPT Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <main class="container narrow">
+    <h1>ProcessGPT</h1>
+    <p class="muted">Process-locked SOP assistant</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="post" class="card">
+      <label>Username <input type="text" name="username" required /></label>
+      <label>Password <input type="password" name="password" required /></label>
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="card smalltext">
+      <p><strong>Seed users:</strong></p>
+      <p>Agent: <code>agent1 / Agent@123</code></p>
+      <p>Trainer: <code>trainer1 / Trainer@123</code></p>
+    </div>
+  </main>
+</body>
+</html>
